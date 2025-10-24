@@ -6,18 +6,29 @@
       </div>
       <div>
         <p class="font-medium text-gray-900 dark:text-white">{{ product.name }}</p>
-        <p class="text-sm text-gray-500 dark:text-gray-400">{{ product.sales }} sales</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          {{ product.sales }} sales • {{ product.stock }} in stock
+        </p>
       </div>
     </div>
     <div class="text-right">
-      <p class="font-semibold text-gray-900 dark:text-white">{{ product.revenue }}</p>
+      <p class="font-semibold text-gray-900 dark:text-white">{{ formatCurrency(product.revenue) }}</p>
       <p class="text-sm text-green-500">Revenue</p>
     </div>
   </div>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
   product: Object
 })
+
+const formatCurrency = (amount) => {
+  if (!amount) return '$0'
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  }).format(amount)
+}
 </script>

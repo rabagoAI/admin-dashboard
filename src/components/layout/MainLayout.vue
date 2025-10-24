@@ -1,13 +1,17 @@
 <template>
-  <div class="min-h-screen flex bg-gray-50 dark:bg-gray-900">
-    <!-- Sidebar -->
+  <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <!-- DEBUG: Comentar uno a la vez -->
+    
+    <!-- Opción A: Comentar Sidebar -->
+    <!-- <Sidebar /> -->
+    
+    <!-- Opción B: Comentar Header -->
     <Sidebar />
     
-    <!-- Main Content -->
     <div class="flex-1 flex flex-col lg:ml-64">
-      <Header />
+      <!-- <Header /> --> <!-- Header comentado -->
+      <Header /> <!-- Header activo -->
       
-      <!-- Page Content -->
       <main class="flex-1 p-6 overflow-auto">
         <router-view />
       </main>

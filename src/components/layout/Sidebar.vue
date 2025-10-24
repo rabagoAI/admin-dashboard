@@ -19,7 +19,7 @@
         :key="item.name"
         :to="item.path"
         class="flex items-center space-x-3 px-4 py-3 text-gray-700 dark:text-gray-200 rounded-lg transition-colors duration-200 hover:bg-blue-50 dark:hover:bg-gray-700"
-        :class="[$route.path === item.path ? 'bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400' : '']"
+        :class="[currentRoute === item.path ? 'bg-blue-50 dark:bg-gray-700 text-blue-600 dark:text-blue-400' : '']"
       >
         <span class="text-lg">{{ item.icon }}</span>
         <span class="font-medium">{{ item.name }}</span>
@@ -42,9 +42,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
 
+const route = useRoute()
 const isSidebarOpen = ref(true)
+
+const currentRoute = computed(() => route.path)
 
 const navigation = [
   { name: 'Dashboard', path: '/', icon: '📊' },
